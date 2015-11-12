@@ -11,14 +11,14 @@ def registerCallbacks(reg):
         'Shotgun_Task_Change': ['sg_status_list'],
     }
     
-    reg.registerCallback('$DEMO_SCRIPT_NAME$', '$DEMO_API_KEY$', flipDownstreamTasks, matchEvents, None)
+    reg.registerCallback('shotgunEventDaemon', '755d4364b9ea1b71be0ec51ccb6c219b49e91429d8cc7a4cb790763fd8dab345', flipDownstreamTasks, matchEvents, None)
 
 
 def flipDownstreamTasks(sg, logger, event, args):
     """Flip downstream Tasks to 'rdy' if all of their upstream Tasks are 'fin'"""
     
     # we only care about Tasks that have been finalled
-    if 'new_value' not in event['meta'] or event['meta']['new_value'] != 'fin':
+    if 'new_value' not in event['meta'] or event['meta']['new_value'] != 'apr':
         return
     
     # downtream tasks that are currently wtg
@@ -35,7 +35,7 @@ def flipDownstreamTasks(sg, logger, event, args):
             logger.debug("Task #%d has multiple upstream Tasks", event['entity']['id'])
             us_filters = [
                 ['downstream_tasks', 'is', ds_task],
-                ['sg_status_list', 'is_not', 'fin'],
+                ['sg_status_list', 'is_not', 'apr'],
                 ]
             if len(sg.find("Task", us_filters)) > 0:
                 change_status = False

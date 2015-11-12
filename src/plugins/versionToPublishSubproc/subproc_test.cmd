@@ -1,0 +1,1 @@
+C:\Python27\python.exe subproc.py "//MINIVEGASDC/projects/Shotgun_software/2015/14_100_BoseInteractiveAnimationFilm", "//minivegasdc/projects/2015/14_100_BoseInteractiveAnimationfilm/post_production/sequences/Kid/idle_01/Anm/work/maya/images/deadline_test/KIDidle.v006.####.jpg", "Test Publish"

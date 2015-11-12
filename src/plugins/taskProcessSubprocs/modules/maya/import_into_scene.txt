@@ -1,0 +1,4 @@
+AbcImport -mode import -fitTimeRange "{file_name}";
+file -rename "{output_file_name}";
+file -save -type "mayaAscii";
+quit;
